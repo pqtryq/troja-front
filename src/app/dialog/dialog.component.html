@@ -1,0 +1,135 @@
+<head>
+  <title>Rezerwacja</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+<link href="/assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+<link href="/assets/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+<link href="/assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container-fluid py-5">
+  <div class="container pt-5 pb-3">
+    <div class="container" style="text-align:center;" >
+      <h1 class="mb-4">Formularz rezerwacji<br></h1>
+
+
+      <form [formGroup]="ReservationFormGroup">
+
+        <div class="labels">
+          <label id="firstname-label" >Imię</label></div>
+        <div class="input-tab">
+          <input type = "text"
+                 class="p-inputtext"
+                 formControlName="Firstname"
+                 required>
+        </div>
+        <div class="labels">
+          <label id="Lastname-label" >Nazwisko</label></div>
+        <div class="input-tab">
+          <input class="p-inputtext"
+                 type="text"
+                 required
+                 formControlName="Lastname">
+        </div>
+        <div class="labels">
+          <label id="Phonenumber-label">Numer telefonu</label></div>
+        <div class="input-tab">
+          <p-inputMask class="p-inputMask"
+                       [style]="{'width':'100%'}"
+                       mask="999-999-999"
+                       formControlName="Phonenumber">
+          </p-inputMask>
+        </div>
+        <div class="labels">
+          <label id="Nop-label">Liczba osób</label></div>
+        <div class="input-tab">
+          <input type = "number"
+                 class="p-inputtext"
+                 formControlName="Nop"
+                 required>
+        </div>
+
+        <div class="labels">
+          <label id="Comments-label">Dodatkowe informacje</label></div>
+        <div class="input-tab">
+          <input type = "text"
+                 class="p-inputtext"
+                 formControlName="Comments"
+                 >
+        </div>
+
+        <div class="labels">
+          <br><br>
+          <label id="info-label">Informacje o rezerwacji:</label></div>
+        <div class="input-tab">
+
+        </div>
+
+        <div class="labels">
+          <label id="hotel-label" >Hotel</label></div>
+        <div class="input-tab">
+          <input type = "text"
+                 placeholder="{{this.hotel}}"
+                 class="p-inputtext"
+                 readonly>
+        </div>
+        <div class="labels">
+          <label id="date1-label" >Data wyjazdu</label></div>
+        <div class="input-tab">
+          <input class="p-inputtext"
+                 placeholder="{{this.startDate}}"
+                 type="text"
+                 readonly
+                 >
+        </div>
+
+        <div class="labels">
+          <label id="date2-label" >Data przyjazdu</label></div>
+        <div class="input-tab">
+          <input class="p-inputtext"
+                 placeholder="{{this.endDate}}"
+                 readonly
+          >
+        </div>
+
+        <div class="labels">
+          <label id="sumprice-label">Łączna cena</label></div>
+        <div class="input-tab">
+          <input type = "number"
+                 placeholder="{{this.sumPrice}} zł"
+                 readonly
+                 class="p-inputtext"
+                 >
+        </div>
+
+
+        <div class="labels">
+          <label id="location-label"></label><br><br><br><br><br><br>Lokalizacja</div>
+        <div class="input-tab" style="margin-left:8px;">
+          <div style="margin-left:8px;">
+            <google-map height="350px"
+                        width="545px"
+                        [center]="center"
+                        [zoom]="zoom">
+            </google-map>
+          </div>
+        </div>
+
+      </form>
+
+
+<br>
+        <div class="buttons-align-justify">
+          <div class="input-group-append">
+            <button class="btn btn-primary px-3" (click)=sendReservation()>Zarezerwuj</button>
+            <p-messages></p-messages>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>

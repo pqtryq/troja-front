@@ -1,0 +1,49 @@
+<div class="container-fluid py-5">
+  <div class="container pt-5 pb-3">
+    <div class="row">
+
+      <div *ngFor="let x of allTravels"  class="col-lg-4 col-md-6 mb-4">
+        <div class="package-item bg-white mb-2">
+          <img class="img-fluid" src= "/assets/img/package-{{x.idtravel}}.jpg" alt="">
+          <div class="p-4">
+            <div class="d-flex justify-content-between mb-3">
+              <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{whereTravel(x.idcountry)}}</small>
+              <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>{{getTravelDays(x.startdate, x.enddate)}} </small>
+              <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>{{x.remslots}} / {{x.slots}}</small>
+            </div>
+            <h5>{{x.hotel}} Hotel </h5>
+            {{x.location}}<br>
+            <small style="text-align: right">Dostępny termin: {{x.startdate}} -  {{x.enddate}}</small>
+            <div class="border-top mt-4 pt-4">
+              <div class="d-flex justify-content-between">
+                <a  (click)="displayTrue(x.idtravel, x.xcord, x.ycord, x)" class="h6"><i class="fa fa-calendar-check text-primary mr-2"></i>Zarezerwuj</a>
+
+                <p-dialog [contentStyle]="{'background-color':'white', 'overflow-y': 'auto', 'overflow-x': 'hidden','max-height': '90vh','min-height':'250px'}"
+                          [(visible)]="service.visible"
+                          [dismissableMask]="true"
+                          [maximizable]="true"
+                          [style]="{'min-width': '80%', 'min-height': '95%', 'justify-content':'center', 'margin':'auto'}"
+                          [transitionOptions]="'200ms'"
+                          [modal]="true"
+                          [draggable]="false"
+                          [resizable]="false"
+                          appendTo="body"
+                          class="ui-dialog-content">
+
+                  <app-dialog id={{x.idtravel}}  *ngIf="service.visible"></app-dialog>
+
+<!--                  <p-footer>-->
+<!--                    <button label="Zamknij" (click)="service.visibleFalse()">Zamknij</button>-->
+<!--                  </p-footer>-->
+                </p-dialog>
+
+
+                <h5 class="m-0">{{x.price}} zł/os</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
